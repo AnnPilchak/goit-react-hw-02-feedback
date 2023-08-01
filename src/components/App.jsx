@@ -13,9 +13,9 @@ class App extends Component {
         bad: 0
     }
     // метод для оновлення стану компонента після отримання відгуку
-    onLeaveFeedback = (value) => {
+    onLeaveFeedback = (evt) => {
         this.setState((prevState) => ({
-        [value]: prevState[value] + 1,
+        [evt.target.value]: prevState[evt.target.value] + 1,
         }));
     };
     // метод для обчислення загальної к-сті відгуків
@@ -35,6 +35,7 @@ class App extends Component {
             <Container>
                 <Section title="Please leave feedback">
                     <FeedbackOptions
+                        options = {Object.keys(this.state)}
                         onLeaveFeedback={this.onLeaveFeedback}>
                     </FeedbackOptions>
                 </Section>
